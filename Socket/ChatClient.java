@@ -24,7 +24,6 @@ public class ChatClient {
                 }
             });
             receiveThread.start();
-            // Envoi des messages saisis par l'utilisateur
             String userInputMessage;
             while ((userInputMessage = userInput.readLine()) != null) {
                 writer.println(userInputMessage); 
