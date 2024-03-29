@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.chatservice";
+option java_outer_classname = "ChatProto";
+option objc_class_prefix = "Chat";
+package chatservice;
+
+
+service Chatservice {
+  rpc SendMessage (SendMessageRequest) returns (SendMessageResponse){}
+  rpc GetMessages (GetMessageRequest) returns (GetMessageResponse) {}
+}
+
+message SendMessageRequest {
+  Message message = 1;
+}
+
+message SendMessageResponse {
+  string userid = 1;
+}
+
+message GetMessageRequest {
+   int32 userid = 1;
+}
+
+message GetMessageResponse {
+    repeated Message messages = 1;
+}
+message Message{
+    int32 recieverid = 2;
+    string text = 3;
+}
