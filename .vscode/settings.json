@@ -1,0 +1,7 @@
+{
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.project.sourcePaths": [
+        "gRPC/grpc-java-course/src/main/java/com/github/simplesteph/grpc/greeting/client",
+        "Socket"
+    ]
+}
