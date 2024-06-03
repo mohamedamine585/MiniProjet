@@ -1,4 +1,6 @@
+
 import java.rmi.Naming;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,13 +24,17 @@ public class RMIClient {
                         break;
                     case "supprimer":
                         System.out.println("Entrez la tâche à supprimer : ");
-                        String taskToRemove = scanner.nextLine();
+                        Integer taskToRemove = Integer.parseInt( scanner.nextLine());
                         taskList.removeTask(taskToRemove);
                         System.out.println("Tâche supprimée avec succès.");
                         break;
                     case "liste":
-                        List<String> tasks = taskList.getTaskList();
-                        System.out.println("Liste des tâches : " + tasks);
+                    System.out.println("Liste des tâches : ");
+                        ArrayList<Task> tasks = taskList.getTaskList();
+                        for(Task task : tasks){
+                            System.out.println("Tâche  : " + task.id + " text : " + task.text);
+                        }
+                       
                         break;
                     case "exit":
                         System.out.println("Fin du programme.");
