@@ -13,28 +13,26 @@ public class ChatClient {
 
             System.out.println("Connecté au serveur de chat. Tapez 'exit' pour quitter.");
 
-            // Thread pour la lecture des messages du serveur
             Thread receiveThread = new Thread(() -> {
                 try {
                     String message;
                     while ((message = reader.readLine()) != null) {
-                        System.out.println(message); // Affiche les messages du serveur sur la console du client
+                        System.out.println(message); 
                     }
                 } catch (IOException e) {
                     System.err.println("Erreur de lecture depuis le serveur : " + e.getMessage());
                 }
             });
-            receiveThread.start(); // Démarre le thread de réception des messages du serveur
-
+            receiveThread.start();
             // Envoi des messages saisis par l'utilisateur
             String userInputMessage;
             while ((userInputMessage = userInput.readLine()) != null) {
-                writer.println(userInputMessage); // Envoie le message au serveur
+                writer.println(userInputMessage); 
 
-                writer.flush(); // Force l'envoi immédiat du message
+                writer.flush(); 
 
                 if (userInputMessage.equalsIgnoreCase("exit")) {
-                    break; // Sort de la boucle si l'utilisateur entre "exit"
+                    break; 
                 }
             }
 
