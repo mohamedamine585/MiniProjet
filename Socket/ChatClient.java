@@ -8,7 +8,7 @@ public class ChatClient {
     public static void main(String[] args) {
         try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
              BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+             PrintWriter writer = new PrintWriter(socket.getOutputStream());
              BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in))) {
 
             System.out.println("Connecté au serveur de chat. Tapez 'exit' pour quitter.");
