@@ -1,21 +1,21 @@
 import java.io.Serializable;
 public class Task implements Serializable{
     Integer id;
-    String text;
-    Task(Integer id, String text){
+    String content;
+    Task(Integer id, String content){
         this.id = id;
-        this.text = text;
+        this.content = content;
     }
     public void setId(Integer id) {
         this.id = id;
     }
-    public void setText(String text) {
-        this.text = text;
+    public void setcontent(String content) {
+        this.content = content;
     }
     public Integer getId() {
         return id;
     }
-    public String getText() {
-        return text;
+    public String getcontent() {
+        return content;
     }
 }

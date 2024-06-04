@@ -9,34 +9,35 @@ public class RMIClient {
         try {
             TaskList taskList = (TaskList) Naming.lookup("//localhost/TaskListService"); // Recherche l'objet distant
             Scanner scanner = new Scanner(System.in);
-            String input;
+            Integer input;
             
             while (true) {
-                System.out.println("Entrez votre commande (ajouter/supprimer/liste/exit) : ");
-                input = scanner.nextLine().toLowerCase(); // Lit l'entrée de l'utilisateur en minuscules
+                System.out.println("Entrez votre commande (ajouter 1 /supprimer 2 /liste 3 /exit 4) : ");
+
+                input = Integer.parseInt(scanner.nextLine().toLowerCase()) ; // Lit l'entrée de l'utilisateur en minuscules
                 
                 switch (input) {
-                    case "ajouter":
+                    case 1:
                         System.out.println("Entrez la tâche à ajouter : ");
                         String taskToAdd = scanner.nextLine();
                         taskList.addTask(taskToAdd);
                         System.out.println("Tâche ajoutée avec succès.");
                         break;
-                    case "supprimer":
+                    case 2:
                         System.out.println("Entrez la tâche à supprimer : ");
-                        Integer taskToRemove = Integer.parseInt( scanner.nextLine());
-                        taskList.removeTask(taskToRemove);
+                        Integer taskId = Integer.parseInt(scanner.nextLine());
+                        taskList.removeTask(taskId);
                         System.out.println("Tâche supprimée avec succès.");
                         break;
-                    case "liste":
+                    case 3:
                     System.out.println("Liste des tâches : ");
                         ArrayList<Task> tasks = taskList.getTaskList();
                         for(Task task : tasks){
-                            System.out.println("Tâche  : " + task.id + " text : " + task.text);
+                            System.out.println("Tâche  id : " + task.id + " || " + task.content);
                         }
                        
                         break;
-                    case "exit":
+                    case 4:
                         System.out.println("Fin du programme.");
                         System.exit(0);
                     default:

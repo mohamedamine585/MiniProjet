@@ -12,7 +12,7 @@ public class TaskListImpl extends UnicastRemoteObject implements TaskList {
     public void addTask(String task) throws RemoteException {
         Integer lastId = 0;
         if(tasks.size() != 0 ){
-          lastId = tasks.getLast().id;
+          lastId = tasks.getLast().id + 1;
         }
         tasks.add(new Task(lastId, task));
     }
@@ -20,7 +20,9 @@ public class TaskListImpl extends UnicastRemoteObject implements TaskList {
     public void removeTask(Integer id) throws RemoteException {
       for(Task task : tasks){
         if(task.id.equals(id)){
+
             tasks.remove(task);
+            break;
         }
       }
     }
